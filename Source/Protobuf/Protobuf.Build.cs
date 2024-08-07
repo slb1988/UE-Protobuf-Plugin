@@ -1,5 +1,3 @@
-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
-
 using UnrealBuildTool;
 using System.IO;
 public class Protobuf : ModuleRules
@@ -9,7 +7,7 @@ public class Protobuf : ModuleRules
         get { return ModuleDirectory; }
     }
 
-    private string ThridPartyPath
+    private string ThirdPartyPath
     {
         get { return Path.Combine(ModulePath, "ThirdParty/"); }
     }
@@ -17,20 +15,6 @@ public class Protobuf : ModuleRules
     public Protobuf(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-		
-		PublicIncludePaths.AddRange(
-			new string[] {
-				// ... add public include paths required here ...
-			}
-			);
-				
-		
-		PrivateIncludePaths.AddRange(
-			new string[] {
-				// ... add other private include paths required here ...
-			}
-			);
-			
 		
 		PublicDependencyModuleNames.AddRange(
 			new string[]
@@ -40,32 +24,10 @@ public class Protobuf : ModuleRules
 			}
 			);
 			
-		
-		PrivateDependencyModuleNames.AddRange(
-			new string[]
-			{
-				// ... add private dependencies that you statically link with here ...	
-			}
-			);
-		
-		
-		DynamicallyLoadedModuleNames.AddRange(
-			new string[]
-			{
-				// ... add any modules that your module loads dynamically here ...
-			}
-			);
-
         PublicSystemIncludePaths.AddRange(
             new string[]
             {
-                Path.Combine(ThridPartyPath,"protobuf/include")
-            }
-            );
-
-        PublicAdditionalLibraries.AddRange(
-            new string[]
-            {
+                Path.Combine(ThirdPartyPath,"protobuf/include")
             }
             );
 
@@ -79,21 +41,14 @@ public class Protobuf : ModuleRules
             bUseRTTI = false;
             PublicDefinitions.Add("GOOGLE_PROTOBUF_NO_RTTI=1");
         }
-        if(Target.Platform != UnrealTargetPlatform.Win64)
-        {
-            PublicDefinitions.Add("HAVE_PTHREAD");
-        }
 
 		ShadowVariableWarningLevel = WarningLevel.Off;
 
-		PublicDefinitions.Add("_CRT_SECURE_NO_WARNINGS=1");
-		PublicDefinitions.Add("_SCL_SECURE_NO_WARNINGS=1");
 		PublicDefinitions.Add("HAVE_ZLIB=0");
 
 		PublicDefinitions.Add("PROTOBUF_USE_DLLS");
         
         bWarningsAsErrors = false;
-        // bEnableShadowVariableWarnings = false;
         bEnableUndefinedIdentifierWarnings = false;
         bEnableExceptions = true;
     }
