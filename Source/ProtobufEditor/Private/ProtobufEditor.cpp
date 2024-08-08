@@ -87,7 +87,7 @@ FString FProtobufEditorModule::GetProtocPath()const
 	FString RetPath;
 	FString PluginPath=IPluginManager::Get().FindPlugin(TEXT("Protobuf"))->GetBaseDir();
 	PluginPath.Append(TEXT(""));
-	FString ProtocExe=FPaths::Combine(PluginPath, TEXT("Source/Protobuf/ThirdParty/protobuf/bin/protoc.exe"));
+	FString ProtocExe=FPaths::Combine(PluginPath, TEXT("Source/Protobuf/ThirdParty/utils/protoc.exe"));
 	if (FPaths::FileExists(ProtocExe))
 	{
 		RetPath = ProtocExe;

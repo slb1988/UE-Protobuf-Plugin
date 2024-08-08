@@ -2,16 +2,6 @@ using UnrealBuildTool;
 using System.IO;
 public class Protobuf : ModuleRules
 {
-    private string ModulePath
-    {
-        get { return ModuleDirectory; }
-    }
-
-    private string ThirdPartyPath
-    {
-        get { return Path.Combine(ModulePath, "ThirdParty/"); }
-    }
-
     public Protobuf(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
@@ -27,7 +17,7 @@ public class Protobuf : ModuleRules
         PublicSystemIncludePaths.AddRange(
             new string[]
             {
-                Path.Combine(ThirdPartyPath,"protobuf/include")
+	            Path.Combine(ModuleDirectory, "ThirdParty")
             }
             );
 
